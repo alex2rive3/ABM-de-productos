@@ -61,6 +61,10 @@
     grid-column: 3/4;
     grid-row: 6;
 }
+.hidden{
+    grid-column: 4/5;
+    grid-row: 6;
+}
 .proveedores{
     grid-column: 1/6;
     grid-row: 7;

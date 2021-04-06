@@ -1,10 +1,18 @@
 <?php
-require_once("controladores/conexion.php")
+require_once("controladores/conexion.php");
+require_once("controladores/funciones.php");
+if ($_POST) {
+    $ResultadoConsulta = mysqli_fetch_array(Consultar($conexion, $_POST["codigo"]), MYSQLI_ASSOC);
+}else {
+    $ResultadoConsulta = mysqli_fetch_array(Consultar($conexion, null), MYSQLI_ASSOC);
+}
+/*while ($resultado = mysqli_fetch_array($ResultadoConsulta, MYSQLI_ASSOC)) {
+    print_r ( $resultado);*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="libs/estiloIndex.css">
@@ -14,12 +22,12 @@ require_once("controladores/conexion.php")
 </head>
 <body>
     <div >
-        <form action="prueba.php" method="post" class ="contenedor">
+        <form action="prueba.php" method="post" class ="contenedor" id ="formulario">
             <div class= "radio">
                 <fieldset>
                     <label id= "identificador">
-                        <input type="radio" name="opcion" value="1" class="radioB"> Registrar Nuevo
-                        <input type="radio" name="opcion" value="2" class="radioB"> Consultar o Modificar Registro
+                        <input type="radio" name="opcion" value="registro" id = "radioRegistro" checked onclick="registrar()"> Registrar Nuevo
+                        <input type="radio" name="opcion" value="consulta" id = "radioConsulta" onclick="consultar()"> Consultar o Modificar Registro
                     </label>
                 </fieldset>
             </div>
@@ -27,14 +35,14 @@ require_once("controladores/conexion.php")
             <div>
                 <fieldset>
                     <label for="codigo">Codigo</label><br>
-                    <input type="text" name="codigo" id="">
+                    <input type="text" name="codigo" id="codigo" value= <?php echo $ResultadoConsulta['codigo'];?>>
                 </fieldset>
             </div>
             <!--//////////////////DESCRIPCION/////////-->
             <div class="descripcion">
                 <fieldset>
                     <label for="descripcion">Descripcion</label><br>
-                    <input type="text" name="descripcion" id="" style="width: 99%;">
+                    <input type="text" name="descripcion" id="descripcion" style="width: 99%;">
                 </fieldset>
             </div>
             <!--////////////////////////Seccion///////////////////////////////////////////-->
@@ -59,7 +67,7 @@ require_once("controladores/conexion.php")
             <div class = "subseccion">
                 <fieldset>
                     <label for="subseccion">SubSeccion</label><br>
-                    <select name="subseccion" id="" class = "seleccion">
+                    <select name="subseccion" id="subSeccion" class = "seleccion">
                         <option selected value="0"> Elige una opción </option>
                         <?php 
                             //sentencia para extraer todos los datos de la tabla
@@ -77,7 +85,7 @@ require_once("controladores/conexion.php")
             <div class = "marca">
                 <fieldset>
                     <label for="marca">Marca</label><br>
-                    <select name="marca" id="" class = "seleccion">
+                    <select name="marca" id="marca" class = "seleccion">
                         <option selected value="0"> Elige una opción </option>
                         <?php 
                             //sentencia para extraer todos los datos de la tabla
@@ -95,7 +103,7 @@ require_once("controladores/conexion.php")
             <div class = "otros">
                 <fieldset>
                     <label for="otros">Otros</label><br>
-                    <select name="otros" id="" class = "seleccion">
+                    <select name="otros" id="otros" class = "seleccion">
                         <option selected value="0"> Elige una opción </option>
                         <?php 
                             //sentencia para extraer todos los datos de la tabla
@@ -113,51 +121,53 @@ require_once("controladores/conexion.php")
             <div class = "cantidad">
                 <fieldset>
                     <label for="cantIngresar">Cant. a Ingr.</label><br>
-                    <input type="text" name="cantIngresar" id="">
+                    <input type="text" name="cantIngresar" id="cantidad" >
                 </fieldset>
             </div>
             <!--//////////////////////EN STOCK////////////////////////////////-->
             <div class = "stock">
                 <fieldset>
                     <label for="stock">En Stock</label><br>
-                    <input type="text" name="stock" id="" disabled>
+                    <input type="text" name="stock" id="stock" disabled>
                 </fieldset>
             </div>
             <!--//////////////////////IVA%////////////////////////////////-->
             <div class = "iva">
                 <fieldset>
                     <label for="iva">IVA%</label><br>
-                    <input type="text" name="iva" id="">
+                    <input type="text" name="iva" id="iva">
                 </fieldset>
             </div>
             <!--//////////////////////RECARGO%////////////////////////////////-->
             <div class = "recargo">
                 <fieldset>
                     <label for="recargo">Recargo%</label><br>
-                    <input type="text" name="recargo" id="">
+                    <input type="text" name="recargo" id="recargo">
                 </fieldset>
             </div>
             <!--//////////////////////PRECION COMPRA////////////////////////////////-->
             <div class = "Pcompra">
                 <fieldset>
                     <label for="precioCompra">P. Compra</label><br>
-                    <input type="text" name="precioCompra" id="">
+                    <input type="text" name="precioCompra" id="pcompra">
                 </fieldset>
             </div>
             <!--//////////////////////PRECIO VENTA////////////////////////////////-->
             <div class ="Pventa">
                 <fieldset>
                     <label for="precioVenta">P. Venta</label><br>
-                    <input type="text" name="precioVenta" id="">
+                    <input type="text" name="precioVenta" id="pventa">
                 </fieldset>
             </div>
             <!--//////////////////////BAJA STOCK////////////////////////////////-->
             <div class = "Bstock">
                 <fieldset>
                     <label for="bajaStock">Baja Stock</label><br>
-                    <input type="text" name="bajaStock" id="">
+                    <input type="text" name="bajaStock" id="bstock">
                 </fieldset>
             </div>
+            <!--/////////////////////INPUT PARA RECUPERAR EL ID PARA ELIMINAR O MODIFICAR UN REGISTRO/////////-->
+            <input type="number" name="id" id="id" hidden class="hidden">
             <!--//////////////////////PROVEEDORES////////////////////////////////-->
             <div class = "proveedores">
                 <fieldset>
@@ -177,8 +187,8 @@ require_once("controladores/conexion.php")
                 </fieldset>
             </div>
             <!--/////////////////////BOTONES//////////////-->
-            <div class="registrar">
-                <button type="submit" class = "boton">Registrar</button>
+            <div class="registrar" >
+                <button type="submit" class = "boton" id="Bregistro">Registrar</button>
             </div>
             <div class="modificar">
                 <button type="submit" class = "boton">Modificar</button>
@@ -193,3 +203,6 @@ require_once("controladores/conexion.php")
     </div>
 </body>
 </html>
+<?php
+//}
+?>
