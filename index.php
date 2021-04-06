@@ -3,9 +3,14 @@ require_once("controladores/conexion.php");
 require_once("controladores/funciones.php");
 if ($_POST) {
     $ResultadoConsulta = mysqli_fetch_array(Consultar($conexion, $_POST["codigo"]), MYSQLI_ASSOC);
+    print_r ($ResultadoConsulta);
 }else {
     $ResultadoConsulta = mysqli_fetch_array(Consultar($conexion, null), MYSQLI_ASSOC);
+    print_r ($ResultadoConsulta);
 }
+//variable que contiene el id del proveedor para poder recuperar la razonSocial de Proveedor para llenar el campo de este 
+$idProveedor = $ResultadoConsulta["proveedores"]; 
+
 /*while ($resultado = mysqli_fetch_array($ResultadoConsulta, MYSQLI_ASSOC)) {
     print_r ( $resultado);*/
 ?>
@@ -42,7 +47,7 @@ if ($_POST) {
             <div class="descripcion">
                 <fieldset>
                     <label for="descripcion">Descripcion</label><br>
-                    <input type="text" name="descripcion" id="descripcion" style="width: 99%;">
+                    <input type="text" name="descripcion" id="descripcion" style="width: 99%;" value= <?php echo $ResultadoConsulta['descripción'];?>>
                 </fieldset>
             </div>
             <!--////////////////////////Seccion///////////////////////////////////////////-->
@@ -50,8 +55,15 @@ if ($_POST) {
                 <fieldset>
                     <label for="seccion">Seccion</label><br>
                     <select name="seccion" id="" class = "seleccion">
-                        <option selected value="0"> Elige una opción </option>
-                            <?php 
+                        <?php
+                        //cuando se raliza la consulta el array tendra un id y gracias a eso se cargara la opcioin ya traida de la base de datos 
+                        if ($ResultadoConsulta['id']) {
+                            echo '<option selected value="'.$ResultadoConsulta[seccion].'">'.$ResultadoConsulta[seccion].'</option>';
+                        }else{?>
+                        <!--En caso contrario estara seleccionada la de elegir opcion-->
+                        <option selected value = "0"> Elige una opción </option>
+                            <?php
+                            } 
                             //sentencia para extraer todos los datos de la tabla
                             $sql = 'SELECT id, seccion FROM `productos`';
                             $filas = $conexion-> query($sql);
@@ -68,8 +80,14 @@ if ($_POST) {
                 <fieldset>
                     <label for="subseccion">SubSeccion</label><br>
                     <select name="subseccion" id="subSeccion" class = "seleccion">
-                        <option selected value="0"> Elige una opción </option>
-                        <?php 
+                        <?php
+                        //cuando se raliza la consulta el array tendra un id y gracias a eso se cargara la opcioin ya traida de la base de datos 
+                        if ($ResultadoConsulta['id']) {
+                            echo '<option selected value="'.$ResultadoConsulta[subSeccion].'">'.$ResultadoConsulta[subSeccion].'</option>';
+                        }else{?>
+                            <option selected value="0"> Elige una opción </option>
+                        <?php
+                            } 
                             //sentencia para extraer todos los datos de la tabla
                             $sql = 'SELECT id, subSeccion FROM `productos`';
                             $filas = $conexion-> query($sql);
@@ -86,8 +104,14 @@ if ($_POST) {
                 <fieldset>
                     <label for="marca">Marca</label><br>
                     <select name="marca" id="marca" class = "seleccion">
-                        <option selected value="0"> Elige una opción </option>
-                        <?php 
+                        <?php
+                        //cuando se raliza la consulta el array tendra un id y gracias a eso se cargara la opcioin ya traida de la base de datos 
+                        if ($ResultadoConsulta['id']) {
+                            echo '<option selected value="'.$ResultadoConsulta[marca].'">'.$ResultadoConsulta[marca].'</option>';
+                        }else{?>
+                            <option selected value="0"> Elige una opción </option>
+                        <?php
+                        } 
                             //sentencia para extraer todos los datos de la tabla
                             $sql = 'SELECT id, marca FROM `productos`';
                             $filas = $conexion-> query($sql);
@@ -104,8 +128,14 @@ if ($_POST) {
                 <fieldset>
                     <label for="otros">Otros</label><br>
                     <select name="otros" id="otros" class = "seleccion">
-                        <option selected value="0"> Elige una opción </option>
+                        <?php
+                        //cuando se raliza la consulta el array tendra un id y gracias a eso se cargara la opcioin ya traida de la base de datos 
+                        if ($ResultadoConsulta['id']) {
+                            echo '<option selected value="'.$ResultadoConsulta[otro].'">'.$ResultadoConsulta[otro].'</option>';
+                        }else{?>
+                            <option selected value="0"> Elige una opción </option>
                         <?php 
+                        }
                             //sentencia para extraer todos los datos de la tabla
                             $sql = 'SELECT id, otro FROM `productos`';
                             $filas = $conexion-> query($sql);
@@ -121,7 +151,7 @@ if ($_POST) {
             <div class = "cantidad">
                 <fieldset>
                     <label for="cantIngresar">Cant. a Ingr.</label><br>
-                    <input type="text" name="cantIngresar" id="cantidad" >
+                    <input type="text" name="cantIngresar" id="cantidad" value= <?php echo $ResultadoConsulta['stock'];?>>
                 </fieldset>
             </div>
             <!--//////////////////////EN STOCK////////////////////////////////-->
@@ -135,28 +165,28 @@ if ($_POST) {
             <div class = "iva">
                 <fieldset>
                     <label for="iva">IVA%</label><br>
-                    <input type="text" name="iva" id="iva">
+                    <input type="text" name="iva" id="iva" value= <?php echo $ResultadoConsulta['iva'];?>>
                 </fieldset>
             </div>
             <!--//////////////////////RECARGO%////////////////////////////////-->
             <div class = "recargo">
                 <fieldset>
                     <label for="recargo">Recargo%</label><br>
-                    <input type="text" name="recargo" id="recargo">
+                    <input type="text" name="recargo" id="recargo" value= <?php echo $ResultadoConsulta['recargo'];?>> 
                 </fieldset>
             </div>
             <!--//////////////////////PRECION COMPRA////////////////////////////////-->
             <div class = "Pcompra">
                 <fieldset>
                     <label for="precioCompra">P. Compra</label><br>
-                    <input type="text" name="precioCompra" id="pcompra">
+                    <input type="text" name="precioCompra" id="pcompra" value= <?php echo $ResultadoConsulta['precioCompra'];?>>
                 </fieldset>
             </div>
             <!--//////////////////////PRECIO VENTA////////////////////////////////-->
             <div class ="Pventa">
                 <fieldset>
                     <label for="precioVenta">P. Venta</label><br>
-                    <input type="text" name="precioVenta" id="pventa">
+                    <input type="text" name="precioVenta" id="pventa" value= <?php echo $ResultadoConsulta['PrecioVenta'];?>>
                 </fieldset>
             </div>
             <!--//////////////////////BAJA STOCK////////////////////////////////-->
@@ -167,14 +197,21 @@ if ($_POST) {
                 </fieldset>
             </div>
             <!--/////////////////////INPUT PARA RECUPERAR EL ID PARA ELIMINAR O MODIFICAR UN REGISTRO/////////-->
-            <input type="number" name="id" id="id" hidden class="hidden">
+            <input type="number" name="id" id="id" hidden class="hidden" value= <?php echo $ResultadoConsulta['id'];?>>
             <!--//////////////////////PROVEEDORES////////////////////////////////-->
             <div class = "proveedores">
                 <fieldset>
                     <label for="proveedores">Proveedoress</label><br>
                     <select name="proveedores" id="" class = "ListaProveedor">
-                        <option selected value="0"> Elige una opción </option>
-                        <?php 
+                        <?php
+                        if ($ResultadoConsulta["id"]) {
+                            $proveedorConsulta = "SELECT razonSocial FROM `proveedores` WHERE id='$idProveedor'";
+                            $resultadoProveedor = mysqli_fetch_array($conexion-> query($proveedorConsulta), MYSQLI_ASSOC);
+                            echo '<option selected value="'.$ResultadoConsulta[proveedores].'">'.$resultadoProveedor[razonSocial].'</option>';
+                        }else{?>
+                            <option selected value="0"> Elige una opción </option>
+                        <?php
+                            }
                             //sentencia para extraer todos los datos de la tabla
                             $sql = 'SELECT id, razonSocial, ruc FROM `proveedores`';
                             $filas = $conexion-> query($sql);
@@ -191,7 +228,7 @@ if ($_POST) {
                 <button type="submit" class = "boton" id="Bregistro">Registrar</button>
             </div>
             <div class="modificar">
-                <button type="submit" class = "boton">Modificar</button>
+                <button type="submit" class = "boton" onclick = "modificar()">Modificar</button>
             </div>
             <div class="limpiar">
                 <button type="reset" class = "boton">Limpiar</button>

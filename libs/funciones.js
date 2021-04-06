@@ -22,3 +22,6 @@ function consultar() {
     document.getElementById('bstock').disabled = true;
     document.getElementById('Bregistro').innerHTML = "Consultar"
 }
+function modificar(){
+    document.forms['formulario'].action = "consulta.php";
+}
