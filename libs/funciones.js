@@ -1,7 +1,7 @@
 //HABILITA TODOS LOS CAMPOS
-function registrar() {
+function Registrar() {
     console.log("Habilitando campos...");
-    document.forms['formulario'].action = "prueba.php";
+    document.forms['formulario'].action = "registrar.php";
     document.getElementById('cantidad').disabled = false;
     document.getElementById('iva').disabled = false;
     document.getElementById('recargo').disabled = false;
@@ -11,7 +11,7 @@ function registrar() {
     document.getElementById('Bregistro').innerHTML = "Registrar"
 }
 //DESABILITA CAMPOS QUE NO SON NECESARIOS PARA REALIZAR UNA CONSULTA
-function consultar() {
+function Consultar() {
     console.log("Desabilitando campos...");
     document.forms['formulario'].action = "index.php";
     document.getElementById('cantidad').disabled = true;
@@ -22,6 +22,9 @@ function consultar() {
     document.getElementById('bstock').disabled = true;
     document.getElementById('Bregistro').innerHTML = "Consultar"
 }
-function modificar(){
-    document.forms['formulario'].action = "consulta.php";
+function redireccionModificar(){
+    document.forms['formulario'].action = "modificar.php";
+}
+function redireccionEliminar() {
+    document.forms['formulario'].action = "eliminar.php";
 }
