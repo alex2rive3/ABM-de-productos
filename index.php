@@ -10,9 +10,6 @@ if ($_POST) {
 }
 //variable que contiene el id del proveedor para poder recuperar la razonSocial de Proveedor para llenar el campo de este 
 $idProveedor = $ResultadoConsulta["proveedores"]; 
-
-/*while ($resultado = mysqli_fetch_array($ResultadoConsulta, MYSQLI_ASSOC)) {
-    print_r ( $resultado);*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +21,7 @@ $idProveedor = $ResultadoConsulta["proveedores"];
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="libs/funciones.js"></script>
     <title>Inicio</title>
-</head>
+</head> 
 <body>
     <div >
         <form action="registrar.php" method="post" class ="contenedor" id ="formulario">
@@ -151,14 +148,14 @@ $idProveedor = $ResultadoConsulta["proveedores"];
             <div class = "cantidad">
                 <fieldset>
                     <label for="cantIngresar">Cant. a Ingr.</label><br>
-                    <input type="text" name="cantIngresar" id="cantidad" required value= <?php echo $ResultadoConsulta['stock'];?>>
+                    <input type="text" name="cantIngresar" id="cantidad" min=0 required >
                 </fieldset>
             </div>
             <!--//////////////////////EN STOCK////////////////////////////////-->
             <div class = "stock">
                 <fieldset>
                     <label for="stock">En Stock</label><br>
-                    <input type="text" name="stock" id="stock" disabled >
+                    <input type="text" name="stock" id="stock" disabled value= <?php echo $ResultadoConsulta['stock'];?>>
                 </fieldset>
             </div>
             <!--//////////////////////IVA%////////////////////////////////-->
@@ -193,16 +190,16 @@ $idProveedor = $ResultadoConsulta["proveedores"];
             <div class = "Bstock">
                 <fieldset>
                     <label for="bajaStock">Baja Stock</label><br>
-                    <input type="text" name="bajaStock" id="bstock" >
+                    <input type="text" name="bajaStock" id="bstock" disabled>
                 </fieldset>
             </div>
             <!--/////////////////////INPUT PARA RECUPERAR EL ID PARA ELIMINAR O MODIFICAR UN REGISTRO/////////-->
-            <input type="number" name="id" id="id" hidden class="hidden" value= <?php echo $ResultadoConsulta['id'];?>>
+            <input type="number" name="id" id="id" hidden class="hidden" value=<?php echo $ResultadoConsulta['id'];?>>
             <!--//////////////////////PROVEEDORES////////////////////////////////-->
             <div class = "proveedores">
                 <fieldset>
                     <label for="proveedores">Proveedoress</label><br>
-                    <select name="proveedores" id="" class = "ListaProveedor" required>
+                    <select name="proveedores" id="proveedores" class = "ListaProveedor" required>
                         <?php
                         if ($ResultadoConsulta["id"]) {
                             $proveedorConsulta = "SELECT razonSocial FROM `proveedores` WHERE id='$idProveedor'";
