@@ -40,9 +40,3 @@ function redireccionModificar(){
 function redireccionEliminar() {
     document.forms['formulario'].action = "eliminar.php";
 }
-
-let id = document.getElementById("id").value;
-console.log(id);
-if(id>0){
-    document.getElementById("bstock").setEditable(True);
-}

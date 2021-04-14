@@ -148,53 +148,59 @@ $idProveedor = $ResultadoConsulta["proveedores"];
             <div class = "cantidad">
                 <fieldset>
                     <label for="cantIngresar">Cant. a Ingr.</label><br>
-                    <input type="text" name="cantIngresar" id="cantidad" min=0 required >
+                    <input type="number" name="cantIngresar" id="cantidad" min=0 required >
                 </fieldset>
             </div>
             <!--//////////////////////EN STOCK////////////////////////////////-->
             <div class = "stock">
                 <fieldset>
                     <label for="stock">En Stock</label><br>
-                    <input type="text" name="stock" id="stock" disabled value= <?php echo $ResultadoConsulta['stock'];?>>
+                    <input type="number" name="stock" id="stock" disabled value= <?php echo $ResultadoConsulta['stock'];?>>
                 </fieldset>
             </div>
             <!--//////////////////////IVA%////////////////////////////////-->
             <div class = "iva">
                 <fieldset>
                     <label for="iva">IVA%</label><br>
-                    <input type="text" name="iva" id="iva" required value= <?php echo $ResultadoConsulta['iva'];?>>
+                    <input type="number" name="iva" id="iva" required value= <?php echo $ResultadoConsulta['iva'];?>>
                 </fieldset>
             </div>
             <!--//////////////////////RECARGO%////////////////////////////////-->
             <div class = "recargo">
                 <fieldset>
                     <label for="recargo">Recargo%</label><br>
-                    <input type="text" name="recargo" id="recargo" required value= <?php echo $ResultadoConsulta['recargo'];?>> 
+                    <input type="number" name="recargo" id="recargo" required value= <?php echo $ResultadoConsulta['recargo'];?>> 
                 </fieldset>
             </div>
             <!--//////////////////////PRECION COMPRA////////////////////////////////-->
             <div class = "Pcompra">
                 <fieldset>
                     <label for="precioCompra">P. Compra</label><br>
-                    <input type="text" name="precioCompra" id="pcompra" required value= <?php echo $ResultadoConsulta['precioCompra'];?>>
+                    <input type="number" name="precioCompra" id="pcompra" required value= <?php echo $ResultadoConsulta['precioCompra'];?>>
                 </fieldset>
             </div>
             <!--//////////////////////PRECIO VENTA////////////////////////////////-->
             <div class ="Pventa">
                 <fieldset>
                     <label for="precioVenta">P. Venta</label><br>
-                    <input type="text" name="precioVenta" id="pventa" required value= <?php echo $ResultadoConsulta['PrecioVenta'];?>>
+                    <input type="number" name="precioVenta" id="pventa" required value= <?php echo $ResultadoConsulta['PrecioVenta'];?>>
                 </fieldset>
             </div>
             <!--//////////////////////BAJA STOCK////////////////////////////////-->
             <div class = "Bstock">
                 <fieldset>
                     <label for="bajaStock">Baja Stock</label><br>
-                    <input type="text" name="bajaStock" id="bstock" disabled>
+                    <?php
+                        if ($ResultadoConsulta['id']>0) { ?>
+                            <input type="number" name="bajaStock" id="bstock">
+                <?php   }else { ?>
+                            <input type="number" name="bajaStock" id="bstock" disabled>
+                <?php   }
+                    ?>
                 </fieldset>
             </div>
             <!--/////////////////////INPUT PARA RECUPERAR EL ID PARA ELIMINAR O MODIFICAR UN REGISTRO/////////-->
-            <input type="number" name="id" id="id" hidden class="hidden" value=<?php echo $ResultadoConsulta['id'];?>>
+            <input type="number" name="id" id="id" hidden value=<?php echo $ResultadoConsulta['id'];?>>
             <!--//////////////////////PROVEEDORES////////////////////////////////-->
             <div class = "proveedores">
                 <fieldset>
@@ -222,7 +228,12 @@ $idProveedor = $ResultadoConsulta["proveedores"];
             </div>
             <!--/////////////////////BOTONES//////////////-->
             <div class="registrar" >
+            <!--El boton se desavilita cuando se realiza una consulta-->
+        <?php if ($ResultadoConsulta["id"]) { ?>
+                <button type="submit" class = "boton" id="Bregistro" disabled>Registrar</button>
+        <?php }else { ?>
                 <button type="submit" class = "boton" id="Bregistro">Registrar</button>
+        <?php }?>
             </div>
             <div class="modificar">
                 <button type="submit" class = "boton" onclick = "redireccionModificar()">Modificar</button>
@@ -237,6 +248,3 @@ $idProveedor = $ResultadoConsulta["proveedores"];
     </div>
 </body>
 </html>
-<?php
-//}
-?>
