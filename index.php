@@ -1,6 +1,13 @@
 <?php
+session_start();
 require_once("controladores/conexion.php");
 require_once("controladores/funciones.php");
+print_r($_SESSION);
+if (!$_SESSION['id']) {
+    header("Location: f_login.php");
+}
+
+//cuando se realiza una consulta se carga los datos en Resultado Consulta para poder poner en los input y editarlos
 if ($_POST) {
     $ResultadoConsulta = mysqli_fetch_array(Consultar($conexion, $_POST["codigo"]), MYSQLI_ASSOC);
     print_r ($ResultadoConsulta);

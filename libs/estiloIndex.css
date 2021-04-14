@@ -11,7 +11,7 @@
 }
 .radioB{
     
-    color: #6A5ACD;
+    color: #3A99FF;
 }
 .descripcion{
     grid-column: 2/6;
@@ -93,8 +93,9 @@
     border: none;
     color: #fff;
     font-size: 16px;
-    font-weight: 900;
-    background: #6A5ACD;
+    font-weight: 700;
+    background: #3A99FF;
+    box-shadow: 7px 9px 24px 0px rgba(0,0,0,0.8);
 }
 
 .seleccion{
