@@ -2,7 +2,7 @@
 session_start();
 require_once("controladores/conexion.php");
 require_once("controladores/funciones.php");
-print_r($_SESSION);
+//print_r($_SESSION);
 if (!$_SESSION['id']) {
     header("Location: f_login.php");
 }
@@ -25,6 +25,7 @@ $idProveedor = $ResultadoConsulta["proveedores"];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="libs/estiloIndex.css">
+    <link rel="stylesheet" href="libs/estiloSidebar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="libs/funciones.js"></script>
     <title>Inicio</title>

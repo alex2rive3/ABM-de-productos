@@ -1,3 +1,6 @@
+body{
+    margin: 0;
+}
 .ContenedorGeneral{
     display: flex;
 }
@@ -5,7 +8,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(7,1fr);
-    margin: 10px 25px 0px;
+    margin-top: 20px;
 }
 .radio{
     grid-column: 1/6;
@@ -98,10 +101,14 @@
     font-size: 16px;
     font-weight: 700;
     background: #3A99FF;
-    box-shadow: 7px 9px 24px 0px rgba(0,0,0,0.8);
+    box-shadow: inset 0 0 15px 0px rgba(0, 0, 0, 0.37);
 }
 .boton:hover{
-    box-shadow: 7px -4px 24px 4px rgba(0,0,0,0.8);
+    cursor: pointer;
+    transform:scale(1.05);
+    filter:blur(0px);
+    opacity:1;
+    box-shadow:0 8px 20px 0px rgba(0, 0, 0, 0.37);
 }
 .seleccion{
     width: 70%;
@@ -111,42 +118,3 @@
     width: 95%;
     height: 30px;
 }
-/*Estilos para el Sidebar*/
-/*.sidebar {
-    width: 180px;
-    height: 100vh;
-    background: #3A99FF;
-    font-size: 1em;
-}
-
-.nav {
-    position: relative;
-    margin: 0 15%;
-    text-align: right;
-    top: 50%;
-    transform: translateY(-50%);
-    font-weight: 800;
-}
-
-.nav ul {
-    list-style: none;
-}
-
-.nav ul li {
-    position: relative;
-    margin: 1.5em 0;
-}
-.nav ul li a {
-    line-height: 4em;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 0.3em;
-    color: #FFF;
-    display: block;
-    transition: all ease-out 300ms;
-}
-.nav ul li a:hover{
-    border-bottom: 4px solid #fff;
-    border-right: 4px solid #fff;
-    border-radius: 10px;
-}*/

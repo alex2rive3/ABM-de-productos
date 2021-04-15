@@ -1,4 +1,16 @@
 <?php 
+function ObtenerTodosLosProductos($conexion){
+    $sql = 'SELECT * FROM productos';
+    $filas = $conexion -> query($sql);
+    return $filas;
+}
+
+function ObtenerTodosLosProveedores($conexion){
+    $sql = 'SELECT * FROM proveedores';
+    $filas = $conexion -> query($sql);
+    return $filas;
+}
+
 function registrar ($conexion,$codigo,$descripcion,$seccion,$subseccion,$marca,$otros,$stock,$precioCompra,$PrecioVenta,$iva,$recargo,$proveedores){ 
     $sql = "INSERT INTO  productos (id, codigo, descripción, seccion, subSeccion, marca, otro, stock, precioCompra, PrecioVenta, iva, recargo, proveedores ) VALUES (NULL,'".$codigo."','".$descripcion."','".$seccion."','".$subseccion."','".$marca."','".$otros."','".$stock."','".$precioCompra."','".$PrecioVenta."','".$iva."','".$recargo."','".$proveedores."')";
     $filas = $conexion->query($sql);
