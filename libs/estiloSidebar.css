@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+html {
+    font-family: Arial;
+    font-size: 16px;
+    background: #fff;
+}
+
+.sidebar {
+    width: 180px;
+    height: 100vh;
+    background: #3A99FF;
+    font-size: 1em;
+}
+
+.nav {
+    position: relative;
+    margin: 0 15%;
+    text-align: right;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 800;
+}
+
+.nav ul {
+    list-style: none;
+}
+
+.nav ul li {
+    position: relative;
+    margin: 1.5em 0;
+}
+.nav ul li a {
+    line-height: 4em;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.3em;
+    color: #FFF;
+    display: block;
+    transition: all ease-out 300ms;
+}
+.nav ul li a:hover{
+    border-bottom: 4px solid #fff;
+    border-right: 4px solid #fff;
+    border-radius: 10px;
+}
