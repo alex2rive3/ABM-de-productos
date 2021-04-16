@@ -1,0 +1,14 @@
+.contenedor{
+    display: flex;
+}
+table{
+    border: 2px solid #000000;
+}
+thead{
+    text-align: center;
+    background-color: #3a99ffa2;
+}
+tbody{
+    background-color: #ccc;
+    text-align: center;
+}

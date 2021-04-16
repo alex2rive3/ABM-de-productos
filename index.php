@@ -2,7 +2,7 @@
 session_start();
 require_once("controladores/conexion.php");
 require_once("controladores/funciones.php");
-//print_r($_SESSION);
+print_r($_SESSION);
 if (!$_SESSION['id']) {
     header("Location: f_login.php");
 }
@@ -33,18 +33,18 @@ $idProveedor = $ResultadoConsulta["proveedores"];
 <body>
     <div class = "ContenedorGeneral">
         <div>
-        <main>
-        <aside class="sidebar">
-            <nav class="nav">
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Proveedores</a></li>
-                <li><a href="#">Usuarios</a></li>
-            </ul>
-            </nav>
-        </aside>
-        </main> 
+            <main>
+                <aside class="sidebar">
+                    <nav class="nav">
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="productos.php">Productos</a></li>
+                        <li><a href="#">Proveedores</a></li>
+                        <li><a href="#">Usuarios</a></li>
+                    </ul>
+                    </nav>
+                </aside>
+            </main> 
         </div>
         <div>
             <form action="registrar.php" method="post" class ="contenedor" id ="formulario">
