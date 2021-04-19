@@ -5,6 +5,12 @@ function ObtenerTodosLosProductos($conexion){
     return $filas;
 }
 
+function ObtenerTodosLosProveedores($conexion){
+    $sql = 'SELECT * FROM proveedores';
+    $filas = $conexion -> query($sql);
+    return $filas;
+}
+
 function ObtenerProveedor($conexion, $id){
     $sql = " SELECT razonSocial FROM `proveedores`WHERE id=$id";
     $filas =mysqli_fetch_array( $conexion -> query($sql), MYSQLI_ASSOC);

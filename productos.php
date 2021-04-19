@@ -35,7 +35,7 @@ if (!$_SESSION['id']) {
         </div>
         <div>
             <div class= "contenedor-Titulo">
-                <h3>Todos los Productos Registrados</h3>
+                <h3>Todos Los Productos Registrados</h3>
                 <a href="index.php"><button class = "boton">Nuevo</button></a>
             </div>
                 <table>

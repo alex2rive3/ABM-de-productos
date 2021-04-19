@@ -2,6 +2,7 @@
     display: flex;
 }
 table{
+    width: 206%;
     border: 2px solid #ffffff;
 }
 thead{
@@ -11,6 +12,12 @@ thead{
 tbody{
     background-color: #ccc;
     text-align: center;
+}
+thead th{
+    height: 30px;
+}
+tbody td{
+    height: 30px;
 }
 .contenedor-Titulo{
     display: flex;
