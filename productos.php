@@ -34,50 +34,55 @@ if (!$_SESSION['id']) {
             </main>
         </div>
         <div>
-        <h3>Todos los Productos registrados</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Codigo</th>
-                        <th>Descripción</th>
-                        <th>Seccion</th>
-                        <th>Sub Seccion</th>
-                        <th>Marca</th>
-                        <th>Otros</th>
-                        <th>Stock</th>
-                        <th>Precio de Compra</th>
-                        <th>Precio de Venta</th>
-                        <th>Iva%</th>
-                        <th>Recargo%</th>
-                        <th>Proveedor</th>
-                    </tr>
-                </thead>
-                <tdody>
-                    <?php 
-                        foreach ($todoLosProductos as $dato) {
-                            $proveedor = ObtenerProveedor($conexion, $dato['proveedores']);
-                    ?>
-                    <tr>
-                        <td><?php echo $dato['id'];?></td>
-                        <td><?php echo $dato['codigo'];?></td>
-                        <td><?php echo $dato['descripción'];?></td>
-                        <td><?php echo $dato['seccion'];?></td>
-                        <td><?php echo $dato['subSeccion'];?></td>
-                        <td><?php echo $dato['marca'];?></td>
-                        <td><?php echo $dato['otro'];?></td>
-                        <td><?php echo $dato['stock'];?></td>
-                        <td><?php echo number_format($dato['precioCompra'], 0, "", ".");?></td>
-                        <td><?php echo number_format($dato['PrecioVenta'], 0, "", ".");?></td>
-                        <td><?php echo $dato['iva'];?></td>
-                        <td><?php echo $dato['recargo'];?></td>
-                        <td><?php echo $proveedor['razonSocial'];?></td>
-                    </tr>
-                    <?php
-                    }
-                    ?>
-                </tdody>
-            </table>
+            <div class= "contenedor-Titulo">
+                <h3>Todos los Productos Registrados</h3>
+                <a href="index.php"><button class = "boton">Nuevo</button></a>
+            </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Codigo</th>
+                            <th>Descripción</th>
+                            <th>Seccion</th>
+                            <th>Sub Seccion</th>
+                            <th>Marca</th>
+                            <th>Otros</th>
+                            <th>Stock</th>
+                            <th>Precio de Compra</th>
+                            <th>Precio de Venta</th>
+                            <th>Iva%</th>
+                            <th>Recargo%</th>
+                            <th>Proveedor</th>
+                        </tr>
+                    </thead>
+                    <tdody>
+                        <?php 
+                            foreach ($todoLosProductos as $dato) {
+                                $proveedor = ObtenerProveedor($conexion, $dato['proveedores']);
+                        ?>
+                        <tr>
+                            <td><?php echo $dato['id'];?></td>
+                            <td><?php echo $dato['codigo'];?></td>
+                            <td><?php echo $dato['descripción'];?></td>
+                            <td><?php echo $dato['seccion'];?></td>
+                            <td><?php echo $dato['subSeccion'];?></td>
+                            <td><?php echo $dato['marca'];?></td>
+                            <td><?php echo $dato['otro'];?></td>
+                            <td><?php echo $dato['stock'];?></td>
+                            <td><?php echo number_format($dato['precioCompra'], 0, "", ".");?></td>
+                            <td><?php echo number_format($dato['PrecioVenta'], 0, "", ".");?></td>
+                            <td><?php echo $dato['iva'];?></td>
+                            <td><?php echo $dato['recargo'];?></td>
+                            <td><?php echo $proveedor['razonSocial'];?></td>
+                        </tr>
+                        <?php
+                        }
+                        ?>
+                    </tdody>
+                </table>
+            </div>
+            </div>
         </div>
     </div>
 </body>

@@ -12,3 +12,23 @@ tbody{
     background-color: #ccc;
     text-align: center;
 }
+.contenedor-Titulo{
+    display: flex;
+}
+
+.link{
+    margin-left: 53%;
+}
+
+.boton{
+    width: 210px;
+    height: 40px;
+    margin: 8px 25px;
+    border-radius: 15px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    background: #3A99FF;
+    box-shadow: inset 0 0 15px 0px rgba(0, 0, 0, 0.37);
+}
