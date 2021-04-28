@@ -1,8 +1,7 @@
 <?php 
 $sevidor = "127.0.0.1";
 $usuario = "root";
-$contrasena = "";
-$puerto = "3306";
+$contrasena ="";
 $baseDeDatos = "inventario";
 
 $conexion = mysqli_connect($sevidor, $usuario, $contrasena, $baseDeDatos);

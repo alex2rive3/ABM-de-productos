@@ -2,7 +2,8 @@
 session_start();
 require_once("controladores/conexion.php");
 require_once("controladores/funciones.php");
-print_r($_SESSION);
+//print_r($_SESSION);
+//Si no esta logueado e intenta a ingresar a esta pagina por medio de la url, sera enviado al loguin directamente   
 if (!$_SESSION['id']) {
     header("Location: f_login.php");
 }
@@ -37,9 +38,9 @@ $idProveedor = $ResultadoConsulta["proveedores"];
                 <aside class="sidebar">
                     <nav class="nav">
                     <ul>
-                        <li><a href="#">Inicio</a></li>
+                        <li><a href="index.php">Inicio</a></li>
                         <li><a href="productos.php">Productos</a></li>
-                        <li><a href="#">Proveedores</a></li>
+                        <li><a href="proveedores.php">Proveedores</a></li>
                         <li><a href="#">Usuarios</a></li>
                     </ul>
                     </nav>
