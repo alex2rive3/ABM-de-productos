@@ -5,10 +5,20 @@ function ObtenerTodosLosProductos($conexion){
     return $filas;
 }
 
+function ObtenerTodosLosUsuarios($conexion){
+    $sql = 'SELECT * FROM user';
+    $filas = $conexion -> query($sql);
+    return $filas;
+}
+
 function ObtenerTodosLosProveedores($conexion){
     $sql = 'SELECT * FROM proveedores';
     $filas = $conexion -> query($sql);
     return $filas;
+}
+function RegistrarProveedor($conexion, $razonSocial, $ruc, $nroCel){
+    $sql = "INSERT INTO proveedores (id, razonSocial, ruc, telefono) VALUES (NULL,'".$razonSocial."','".$ruc."','".$nroCel."')";
+    $filas = $conexion -> query($sql);
 }
 
 function ObtenerProveedor($conexion, $id){

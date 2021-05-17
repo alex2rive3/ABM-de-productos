@@ -3,9 +3,9 @@ body{
     margin: auto;
 }
 form{
-    text-align: center;
+    text-align: left;
 }
-button{
+.boton{
     width: 145px;
     height: 32px;
     border-radius: 8px;
@@ -16,6 +16,7 @@ button{
     font-weight: 700;
 }
 input{
+    width: 60%;
     border-radius: 8px;
     border: 1px solid;
     height: 24px;

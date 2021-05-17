@@ -41,7 +41,7 @@ $idProveedor = $ResultadoConsulta["proveedores"];
                         <li><a href="index.php">Inicio</a></li>
                         <li><a href="productos.php">Productos</a></li>
                         <li><a href="proveedores.php">Proveedores</a></li>
-                        <li><a href="#">Usuarios</a></li>
+                        <li><a href="usuario.php">Usuarios</a></li>
                     </ul>
                     </nav>
                 </aside>
