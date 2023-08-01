@@ -1,6 +1,7 @@
 <?php
 require_once("conexion.php");
 function validarEntrada($usuario, $contrasena, $conexion){
+    //echo ($usuario + $contrasena);
     //filtrar y sanetizar los datos
     $usuario = filter_var($usuario, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
     $contrasena = filter_var($contrasena, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
